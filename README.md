@@ -1,2 +1,9 @@
 # DailyCoding
-Daily Coding Problems
+
+## Description
+Personal solutions to the Daily Coding Problems
+
+## Collaborators
+| Name | Nickname |
+| ---- | -------- |
+| Thomas Rochais | aquilachess |
