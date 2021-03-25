@@ -41,7 +41,6 @@ class LinkedList:
             return
         current = self.head
         prev = None
-        count = 0
         while current.next:
             self.swap(current, prev)
             prev = current
