@@ -1,4 +1,3 @@
-import operator
 def reverse_polish_computation(lst):
     ops = {'+': (lambda x,y: x+y),
         '-': (lambda x,y: x-y),
