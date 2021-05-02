@@ -140,6 +140,7 @@ print("Brute force method, minimizing the", \
     "empty-space nearest neighbor function:")
 # Note that as it uses a different metric for the definition of "even",
 # the results are expected to be different
+# The 3rd argument is a flag to use the second cost function instead of the default
 print(optimalSubsample_bruteforce([0, 1, 2, 3, 4, 100], 2, 2))
 print(optimalSubsample_bruteforce([0, 1, 2, 3, 4, 100], 3, 2))
 print(optimalSubsample_bruteforce([0, 1, 2, 3, 4, 100], 4, 2))
