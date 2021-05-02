@@ -2,6 +2,7 @@ import math
 import itertools
 import numpy as np
 from sklearn.cluster import KMeans
+import time
 
 # Returns the distance between the points a and b
 # For now we assume we have a flat metric
@@ -126,23 +127,36 @@ def optimalSubsample(sample, N):
     res.append(sample[-1])
     return res
 
+'''
+Provided examples:
+optimalSubsample([0, 1, 2, 3, 4, 100], 2) => [0,100] // Always two extreme ends for 2
+optimalSubsample([0, 1, 2, 3, 4, 100], 3) => [0, 4, 100]
+optimalSubsample([0, 1, 2, 3, 4, 100], 4) => [0, 2, 4, 100]
+'''
 # We assume that the sample is sorted
 # Try a few examples:
 print("Brute force method, minimizing the difference", \
     "between the greatest and smallest neighbor distances:")
-# Note that the brute force method will not scale well with sample size
+# Note that the brute force method will not scale well
 print(optimalSubsample_bruteforce([0, 1, 2, 3, 4, 100], 2))
 print(optimalSubsample_bruteforce([0, 1, 2, 3, 4, 100], 3))
 print(optimalSubsample_bruteforce([0, 1, 2, 3, 4, 100], 4))
 print(optimalSubsample_bruteforce([0, 1, 2, 3, 4, 100], 5))
+print(optimalSubsample_bruteforce([0, 1, 2, 3, 4, 7, 15, 25], 5))
+print(optimalSubsample_bruteforce([0, 1, 2, 3, 4, 7, 15, 25], 7))
+print(optimalSubsample_bruteforce([0, 1, 2, 3, 4, 7, 15, 25], 9))
+print(optimalSubsample_bruteforce([i*5 for i in range(10)], 8))
 print("Brute force method, minimizing the", \
     "empty-space nearest neighbor function:")
-# Note that as it uses a different metric for the definition of "even",
-# the results are expected to be different
+# Note that as it uses a different metric for the definition of "even" the results are expected to be different
 print(optimalSubsample_bruteforce([0, 1, 2, 3, 4, 100], 2, 2))
 print(optimalSubsample_bruteforce([0, 1, 2, 3, 4, 100], 3, 2))
 print(optimalSubsample_bruteforce([0, 1, 2, 3, 4, 100], 4, 2))
 print(optimalSubsample_bruteforce([0, 1, 2, 3, 4, 100], 5, 2))
+print(optimalSubsample_bruteforce([0, 1, 2, 3, 4, 7, 15, 25], 5, 2))
+print(optimalSubsample_bruteforce([0, 1, 2, 3, 4, 7, 15, 25], 7, 2))
+print(optimalSubsample_bruteforce([0, 1, 2, 3, 4, 7, 15, 25], 9, 2))
+print(optimalSubsample_bruteforce([i*5 for i in range(10)], 8))
 # Note that the k-clustering method can yield different results since it uses a different
 # metric for what is considered to be "even" 
 print("Using k-clustering:")
@@ -150,3 +164,9 @@ print(optimalSubsample([0, 1, 2, 3, 4, 100], 2))
 print(optimalSubsample([0, 1, 2, 3, 4, 100], 3))
 print(optimalSubsample([0, 1, 2, 3, 4, 100], 4))
 print(optimalSubsample([0, 1, 2, 3, 4, 100], 5))
+print(optimalSubsample([0, 1, 2, 3, 4, 7, 15, 25], 5))
+print(optimalSubsample([0, 1, 2, 3, 4, 7, 15, 25], 7))
+print(optimalSubsample([0, 1, 2, 3, 4, 7, 15, 25], 9))
+print(optimalSubsample([i*5 for i in range(10)], 8))
+print(optimalSubsample([i*5 for i in range(50)], 8))
+print(optimalSubsample([i*5 for i in range(50)], 40))
