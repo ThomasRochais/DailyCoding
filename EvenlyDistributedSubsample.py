@@ -79,6 +79,7 @@ def baseCases(sample, N):
 # From the examples, it appears we also want to maximize the spread of the subsample
 # Thus we always include the first and last values from the sample (which is sorted)
 # Then we want to take a subsample which minimizes the cost function
+# The cost_flag is used to determine which cost function to minimize
 def optimalSubsample_bruteforce(sample, N, cost_flag = 1):
     if N <= 2 or N >= len(sample):
         return baseCases(sample, N)
