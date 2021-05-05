@@ -16,7 +16,7 @@ def baseCases(sample, N):
         return sample
 
 def optimalSubsample(sample, N):
-    # EPSILON = 10**(-5) # Can be useful to "round up" nearest neighbors search
+    EPSILON = 10**(-5) # Can be useful to "round up" nearest neighbors search
     l = len(sample)
     if N <= 2 or N >= l:
         return baseCases(sample, N)
